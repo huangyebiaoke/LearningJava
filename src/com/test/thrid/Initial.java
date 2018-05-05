@@ -18,6 +18,7 @@ public class Initial {
 			}
 		};
 		a3.angle();
+		
 		new IAngle() {
 			public void angle() {
 				System.out.println("匿名内部类实现接口2");
