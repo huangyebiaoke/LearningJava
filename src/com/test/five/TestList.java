@@ -40,7 +40,7 @@ public class TestList {
 		}
 	}
 	
-	public void testIt() {
+	public void testIterator() {
 		System.out.println("*****************通过iterator来获取对象************************");
 		Iterator it = courseToSelect.iterator();
 		while ( it.hasNext()) {
@@ -51,18 +51,42 @@ public class TestList {
 	
 	public void testEach() {
 		System.out.println("*****************通过for each来获取对象************************");
+		/*先把它当作Object类型取出然后cast to Course
+		 *如果直接用Course取出会报错因为咩有声明courseToSelect中存取的是Course
+		 *cannot convert from element type Object to Course
+		 */
 		for (Object obj : courseToSelect) {
 			Course temp=(Course)obj;
 			System.out.println(temp.toString()+" "+temp.getId()+" "+temp.getName());
 		}
 	}
+	public void testModify() {
+		System.out.println("*****************通过set来修改对象************************");
+		courseToSelect.set(4, new Course(4,"毛概"));
+	}
+	/**
+	 * 3 method of remove object in collection
+	 */
+	public void testRemove() {
+		System.out.println("*****************remove&removeAll************************");
+		/*Course c=(Course)courseToSelect.get(4);
+		courseToSelect.remove(c);*/
+//		courseToSelect.remove(3);
+		Course[] c= {(Course) courseToSelect.get(3),(Course) courseToSelect.get(4)};
+		courseToSelect.removeAll(Arrays.asList(c));
+	}
+	
 	public static void main(String[] args) {
 		
-		TestList t1=new TestList();
-		t1.testAdd();
-		t1.testSize();
-		t1.testIt();
-		t1.testEach();
+		TestList t=new TestList();
+		t.testAdd();
+		t.testSize();
+		t.testIterator();
+		t.testEach();
+		t.testModify();
+		t.testSize();
+		t.testRemove();
+		t.testSize();
 		
 	}
 

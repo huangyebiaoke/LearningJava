@@ -6,11 +6,11 @@ import java.util.Set;
 public class Student {
 	private int id;
 	private String name;
-	private Set course;
+	private Set<Course> course;
 	public Student(int id,String name){
 		this.id=id;
 		this.name=name;
-		this.course=(Set) new HashSet();
+		this.course=(Set) new HashSet<Course>();
 	}
 	public int getId() {
 		return id;
@@ -24,10 +24,10 @@ public class Student {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Set getSelectToCourse() {
+	public Set<Course> getCourse() {
 		return course;
 	}
-	public void setSelectToCourse(Set selectToCourse) {
+	public void setCourse(Set<Course> course) {
 		this.course = course;
 	}
 
